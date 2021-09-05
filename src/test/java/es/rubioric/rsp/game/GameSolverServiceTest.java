@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import es.rubioric.rsp.model.GameResult;
+import es.rubioric.rsp.model.HandShape;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -97,6 +99,21 @@ class GameSolverServiceTest {
     assertNotNull(totalScores); 
     assertEquals(0L, totalScores.getTotalPlayedRounds()); 
     assertEquals(0L, totalScores.getTotalWinsPlayerOne());
+    assertEquals(0L, totalScores.getTotalWinsPlayerTwo());
+    assertEquals(0L, totalScores.getTotalDraws());
+        
+  }
+  
+  @Test
+  void testSummarizeTotalScoresWithNoPlayer2Wins() throws Exception {
+    
+    service.registerPlayedRound(SESSIONID, HandShape.ROCK, HandShape.SCISSORS);
+    
+    TotalScores totalScores = service.summarizeTotalScores();
+    
+    assertNotNull(totalScores); 
+    assertEquals(1L, totalScores.getTotalPlayedRounds()); 
+    assertEquals(1L, totalScores.getTotalWinsPlayerOne());
     assertEquals(0L, totalScores.getTotalWinsPlayerTwo());
     assertEquals(0L, totalScores.getTotalDraws());
         

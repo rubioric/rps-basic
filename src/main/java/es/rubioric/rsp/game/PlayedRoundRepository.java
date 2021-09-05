@@ -96,7 +96,7 @@ public class PlayedRoundRepository {
       
       Long totalWinsPlayerOne = map.get(GameResult.PLAYER_1_WINS);
       Long totalWinsPlayerTwo = map.get(GameResult.PLAYER_2_WINS);
-      Long totalDraws         = map.get(GameResult.PLAYER_1_WINS);
+      Long totalDraws         = map.get(GameResult.DRAW);
       
       totalScores.setTotalWinsPlayerOne(totalWinsPlayerOne != null ? totalWinsPlayerOne : 0L); 
       totalScores.setTotalWinsPlayerTwo(totalWinsPlayerTwo != null ? totalWinsPlayerTwo : 0L);
