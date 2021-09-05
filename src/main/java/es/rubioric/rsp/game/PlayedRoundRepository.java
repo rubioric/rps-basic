@@ -92,10 +92,15 @@ public class PlayedRoundRepository {
           registry.stream()
                   .collect(groupingBy(PlayedRound::getResult, counting()));
   
-      totalScores.setTotalPlayedRounds(registry.size()); 
-      totalScores.setTotalWinsPlayerOne(map.get(GameResult.PLAYER_1_WINS)); 
-      totalScores.setTotalWinsPlayerTwo(map.get(GameResult.PLAYER_2_WINS));
-      totalScores.setTotalDraws(map.get(GameResult.DRAW));
+      totalScores.setTotalPlayedRounds(registry.size());
+      
+      Long totalWinsPlayerOne = map.get(GameResult.PLAYER_1_WINS);
+      Long totalWinsPlayerTwo = map.get(GameResult.PLAYER_2_WINS);
+      Long totalDraws         = map.get(GameResult.PLAYER_1_WINS);
+      
+      totalScores.setTotalWinsPlayerOne(totalWinsPlayerOne != null ? totalWinsPlayerOne : 0L); 
+      totalScores.setTotalWinsPlayerTwo(totalWinsPlayerTwo != null ? totalWinsPlayerTwo : 0L);
+      totalScores.setTotalDraws(totalDraws != null ? totalDraws : 0L);
     }
     
     return totalScores;
