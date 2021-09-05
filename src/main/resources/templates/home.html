@@ -95,6 +95,10 @@ body {
 }
 
 
+.buttonlang {
+  width: 70px;
+}
+
 .button1 {
   background-color: white; 
   color: black; 
@@ -123,26 +127,29 @@ body {
 <body>
 
 <div class="wrapper">
-<h2>Lottoland and Ricardo Rubio</h2>
+<h2><span th:text="#{main.presents}"/></h2>
 
 <div class="header">
-  <h2>ROCK PAPER SCISSORS</h2>
+  <h2><span th:text="#{main.title}"/></h2>
 </div>
 
 <div class="row">
   <div class="column side">
-    <button class="button button2 disabled">Home</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|">Show Played Rounds</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/showTotalScores'|">View Totals</button><br>
+    <button class="button button1 buttonlang" th:onclick="|window.location.href='/?lang=en'|"/>EN</button>&nbsp;<button class="button button1 buttonlang" th:onclick="|window.location.href='/?lang=es'|"/>ES</button><br>
+    <button class="button button2 disabled" th:text="#{button.home}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|" th:text="#{button.show.played.rounds}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/showTotalScores'|" th:text="#{button.view.totals}"/><br>
   </div>
   
   
   <div class="column middle">
-    <h3>Welcome!</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu diam lorem. Proin sagittis commodo ante non rutrum. Morbi enim metus, blandit non lectus a, aliquam ornare sapien. Aliquam quis mauris bibendum, dictum ex eu, faucibus enim. Vestibulum in lorem non arcu vehicula vulputate.</p> 
-  <p>Donec ultricies pellentesque tortor, porttitor sollicitudin urna malesuada nec. Mauris non dui leo. Integer vel dui elit. Nullam pellentesque id tortor ac lobortis. Aenean metus nibh, efficitur blandit accumsan congue, elementum non nunc. Integer sagittis massa at placerat eleifend. Sed porta, tortor accumsan ultrices sagittis, nibh nunc elementum nunc, vel auctor metus ante nec diam. Fusce pretium pulvinar tristique. Pellentesque consectetur commodo odio, non mattis lectus elementum vitae.</p> 
-  <p>Maecenas enim dui, aliquet nec pellentesque sed, fringilla et felis. Ut in fringilla lectus. Aenean sagittis eros justo, non eleifend sem luctus vitae. Nulla arcu dolor, sollicitudin eu arcu quis, sagittis pulvinar dolor.</p>
-  <h3>Enjoy!</h3>
+    <h3><span th:text="#{home.welcome}"/></h3>
+    
+    <p><span th:text="#{home.first.paragraph}"/></p> 
+    <p><span th:text="#{home.second.paragraph}"/></p> 
+    <p><span th:text="#{home.third.paragraph}"/></p> 
+    
+    <h3><span th:text="#{home.enjoy}"/></h3>
   </div>
   
   <div class="column side">

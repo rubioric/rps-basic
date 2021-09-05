@@ -94,6 +94,9 @@ body {
   height: 50px;
 }
 
+.buttonlang {
+  width: 70px;
+}
 
 .button1 {
   background-color: white; 
@@ -121,23 +124,24 @@ body {
 <body>
 
 <div class="wrapper">
-<h2>Lottoland and Ricardo Rubio</h2>
+<h2><span th:text="#{main.presents}"/></h2>
 
 <div class="header">
-  <h2>ROCK PAPER SCISSORS</h2>
+  <h2><span th:text="#{main.title}"/></h2>
 </div>
 
 <div class="row">
   <div class="column side">
-    <button class="button button1" th:onclick="|window.location.href='/'|">Home</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|">Show Played Rounds</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/showTotalScores'|">View Totals</button><br>
+    <button class="button button1 buttonlang" th:onclick="|window.location.href='/error?lang=en'|"/>EN</button>&nbsp;<button class="button button1 buttonlang" th:onclick="|window.location.href='/error?lang=es'|"/>ES</button><br>
+    <button class="button button1" th:onclick="|window.location.href='/'|" th:text="#{button.home}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|" th:text="#{button.show.played.rounds}"/><br>
+    <button class="button button1" th:onclick="|window.location.href='/showTotalScores'|" th:text="#{button.view.totals}"/><br>
   </div>
   
   
   <div class="column middle">
     <h3>Ooooops!</h3>
-    <p>Something went wrong. Our personnel is working right now to solve the problem.</p> 
+    <p><span th:text="#{msg.working.on.it}"/></p> 
  </div>
   
   <div class="column side">

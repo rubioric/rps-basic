@@ -98,6 +98,9 @@ body {
   height: 50px;
 }
 
+.buttonlang {
+  width: 70px;
+}
 
 .button1 {
   background-color: white; 
@@ -128,38 +131,54 @@ body {
 <body>
 
 <div class="wrapper">
-<h2>Lottoland and Ricardo Rubio</h2>
+<h2><span th:text="#{main.presents}"/></h2>
 
 <div class="header">
-  <h2>ROCK PAPER SCISSORS</h2>
+  <h2><span th:text="#{main.title}"/></h2>
 </div>
 
 <div class="row">
   <div class="column side">
-    <button class="button button1" th:onclick="|window.location.href='/'|">Home</button><br>
-    <button class="button button2 disabled">Show Played Rounds</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/play'|">Play New Round</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/logout'|">Restart Game</button><br>
-  	<button class="button button1" th:onclick="|window.location.href='/showTotalScores'|">View Totals</button><br>
+    <button class="button button1 buttonlang" th:onclick="|window.location.href='/showPlayedRounds?lang=en'|"/>EN</button>&nbsp;<button class="button button1 buttonlang" th:onclick="|window.location.href='/showPlayedRounds?lang=es'|"/>ES</button><br>
+    <button class="button button1" th:onclick="|window.location.href='/'|" th:text="#{button.home}"/><br>
+    <button class="button button2 disabled" th:text="#{button.show.played.rounds}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/play'|" th:text="#{button.play.new.round}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/logout'|" th:text="#{button.restart.game}"/><br>
+  	<button class="button button1" th:onclick="|window.location.href='/showTotalScores'|" th:text="#{button.view.totals}"/><br>
   </div>
   
   
   <div class="column middle">
   
     <table id="rounds">
-    <caption>Played Rounds</caption>
+    <caption th:text="#{label.played.rounds}"/>
 	  <tr>
-	    <th id="playerOne">1st Player Chose</th>
-	    <th id="playerTwo">2nd Player Chose</th>
-	    <th id="result">RESULT</th>
+	    <th id="playerOne" th:text="#{label.first.player.chose}"/>
+	    <th id="playerTwo" th:text="#{label.second.player.chose}"/>
+	    <th id="result"    th:text="#{label.result}"/>
 	  </tr>
 	  
-	  <td th:if="${#lists.isEmpty(playedRounds)}" colspan="3">No rounds played yet</td>
+	  <td th:if="${#lists.isEmpty(playedRounds)}" colspan="3" th:text="#{msg.no.rounds}"/>
 	  
 	  <tr th:each="singleRound: ${playedRounds}">
-	    <td th:text="${singleRound.playerOne}"/>
-	    <td th:text="${singleRound.playerTwo}"/>
-	    <td th:text="${singleRound.result}"/>
+	    <td th:switch="${singleRound.playerOne.name}">
+	       <span th:case="ROCK"      th:text="#{choice.rock}"/>
+	       <span th:case="PAPER"     th:text="#{choice.paper}"/>
+	       <span th:case="SCISSORS"  th:text="#{choice.scissors}"/>
+	    </td>
+	    
+	    <td th:switch="${singleRound.playerTwo.name}">
+         <span th:case="ROCK"     th:text="#{choice.rock}"/>
+         <span th:case="PAPER"    th:text="#{choice.paper}"/>
+         <span th:case="SCISSORS" th:text="#{choice.scissors}"/>
+      </td>
+      
+	    <td th:switch="${singleRound.result.name}">
+	       <span th:case="PLAYER_1_WINS" th:text="#{result.first.player.wins}"/>
+         <span th:case="PLAYER_2_WINS" th:text="#{result.second.player.wins}"/>
+         <span th:case="DRAW"          th:text="#{result.draw}"/>
+      </td>
+      
 	  </tr>
   
 	  </table>
@@ -167,7 +186,7 @@ body {
   </div>
   
   <div class="column side">
-	<h4 style="margin: 4px 2px;">Total Played Rounds:</h4>
+	<h4 style="margin: 4px 2px;"><span th:text="#{label.played.rounds}"/></h4>
 	    <span th:if="${#lists.isEmpty(playedRounds)}" style="margin-left: 8px;">0</span>
 	    <span th:unless="${#lists.isEmpty(playedRounds)}" th:text="${playedRounds.size}" style="margin-left: 8px;">0</span>
    </div>

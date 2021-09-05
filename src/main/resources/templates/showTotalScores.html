@@ -100,6 +100,9 @@ body {
   height: 50px;
 }
 
+.buttonlang {
+  width: 70px;
+}
 
 .button1 {
   background-color: white; 
@@ -131,41 +134,42 @@ body {
 <body>
 
 <div class="wrapper">
-<h2>Lottoland and Ricardo Rubio</h2>
+<h2><span th:text="#{main.presents}"/></h2>
 
 <div class="header">
-  <h2>ROCK PAPER SCISSORS</h2>
+  <h2><span th:text="#{main.title}"/></h2>
 </div>
 
 <div class="row">
 
   <div class="column side">
-    <button class="button button1" th:onclick="|window.location.href='/'|">Home</button><br>
-    <button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|">Show Played Rounds</button><br>
-    <button class="button button2 disabled">View Totals</button><br>
+    <button class="button button1 buttonlang" th:onclick="|window.location.href='/showTotalScores?lang=en'|"/>EN</button>&nbsp;<button class="button button1 buttonlang" th:onclick="|window.location.href='/showTotalScores?lang=es'|"/>ES</button><br>
+    <button class="button button1" th:onclick="|window.location.href='/'|" th:text="#{button.home}"/><br>
+    <button class="button button1" th:onclick="|window.location.href='/showPlayedRounds'|" th:text="#{button.show.played.rounds}"/><br>
+    <button class="button button2 disabled" th:text="#{button.view.totals}"/><br>
   </div>
   
   <div class="column middle">
   
     <table id="summary">
-    <caption>Summary</caption>
+    <caption th:text="#{label.summary}"/> 
           <tr>
-            <th id="summary-header" colspan="2">Summary</th>    
+            <th id="summary-header" colspan="2" th:text="#{label.summary}"/>    
           </tr>
           <tr>
-            <td>Total rounds played</td>
+            <td th:text="#{label.total.wins.first.player}"/> 
             <td th:text="${totalScores.totalPlayedRounds}"/> 
           </tr>
           <tr>
-            <td>Total wins 1st player</td>
+            <td th:text="#{label.total.wins.first.player}"/> 
             <td th:text="${totalScores.totalWinsPlayerOne}"/>   
           </tr>
           <tr>
-            <td>Total wins 2nd player</td>
+            <td th:text="#{label.total.wins.second.player}"/> 
             <td th:text="${totalScores.totalWinsPlayerTwo}"/>     
           </tr>
           <tr>
-            <td>Total draws</td>
+            <td th:text="#{label.total.draws}"/> 
             <td th:text="${totalScores.totalDraws}"/>   
           </tr>
     </table>
