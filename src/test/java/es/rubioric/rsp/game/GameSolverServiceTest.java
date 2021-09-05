@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import es.rubioric.rsp.model.GameResult;
 import es.rubioric.rsp.model.HandShape;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 
-
+/**
+*
+*<p>
+*   Game Solver Service Test class.
+*</p>
+*
+* @author Ricardo Rubio
+*
+*/
 @SpringBootTest
 class GameSolverServiceTest {
 

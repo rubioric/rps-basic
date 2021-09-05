@@ -9,6 +9,8 @@ import static es.rubioric.rsp.model.ModelAttributeConstants.MODEL_ATT_TOTAL_SCOR
 import static es.rubioric.rsp.view.ViewConstants.VIEW_HOME;
 import static es.rubioric.rsp.view.ViewConstants.VIEW_SHOW_PLAYED_ROUNDS;
 import static es.rubioric.rsp.view.ViewConstants.VIEW_SHOW_TOTAL_SCORES;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -73,6 +75,7 @@ class GameControllerTest {
     mockMvc.perform(get(REQUEST_MAPPING_SHOW_PLAYED_ROUNDS))
            .andExpect(status().isOk())
            .andExpect(model().attributeExists(MODEL_ATT_PLAYED_ROUNDS))
+           .andExpect(model().attribute(MODEL_ATT_PLAYED_ROUNDS, is(notNullValue())))
            .andExpect(view().name(VIEW_SHOW_PLAYED_ROUNDS));    
   }
   
@@ -89,6 +92,7 @@ class GameControllerTest {
     mockMvc.perform(get(REQUEST_MAPPING_SHOW_TOTAL_SCORES))
            .andExpect(status().isOk())
            .andExpect(model().attributeExists(MODEL_ATT_TOTAL_SCORES))
+           .andExpect(model().attribute(MODEL_ATT_TOTAL_SCORES, is(notNullValue())))
            .andExpect(view().name(VIEW_SHOW_TOTAL_SCORES));    
   }
 }
